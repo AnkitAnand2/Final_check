@@ -50,7 +50,7 @@ def weathercall(weather):
                                                       weather.get('list')[x].get('rain')]
 
         col_name=['Temp','Feels_Like','Temp_Min','Temp_Max','Pressure','Sea_Level','Humidity','Weather_Condition',
-                      'Description','Clouds','Wind_Speed','Visibility','Rain']
+                      'Description','Cloudiness %','Wind_Speed(meter/sec)','Visibility','Rain(Volume mm/3hr)']
         
         df= pd.DataFrame(ls)
         df_t=df.transpose() 
@@ -77,16 +77,18 @@ def forecast():
         print('You have not provided proper parameter(Y/N) so skipping this part:')
     
     city=input("Enter the City Name you want the forecast for: ")
-
+    
+    
+    #ThreadPoolExecutor uses a pool of threads to execute calls asynchronously.
     with concurrent.futures.ThreadPoolExecutor() as executor:
         future = executor.submit(api_call, city)
         weather = future.result()
     result_forecast = weathercall(weather)
+    
     if report=='y':
         with pd.ExcelWriter('Forecast_Results.xlsx') as writer:
             result_forecast.to_excel(writer,sheet_name="Weather_Report")
     
     print(result_forecast)
-
 
 
