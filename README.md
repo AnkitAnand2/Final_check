@@ -43,11 +43,16 @@ from weather_py import weather_py
 
 weather_py.forecast() # returns 'Date with 5 Days Forecasting with every 3 hour interval'
 
-report=input("Print report to text file :(Y/N)").lower()#Prompt to select wether to print the weather report in xlsx file or not 
+report=input("Print report to text file :(Y/N)").lower()#Prompt to select whether to print the weather report in xlsx file or not 
 
 city=input("Enter the City Name you want the forecast for: ")# Prompt to input city weather to forecast.
 
 ```
+
+## requirements.txt file
+
+This contains all the packages used this package.
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
