@@ -68,9 +68,9 @@ def forecast():
     
     print("Welcome to the Weather Forecasting Platform")
     report=input("Print report to text file :(Y/N)").lower()
+    
     if report=='y':
-        with pd.ExcelWriter('Forecast_Results.xlsx') as writer:
-            result_forecast.to_excel(writer,sheet_name="Weather_Report")
+        print("Report will be generated: ")
     elif report=='n':
         print('You have opted for NO... Displaying Weather Forecast on Screen:')
     else:
@@ -82,6 +82,9 @@ def forecast():
         future = executor.submit(api_call, city)
         weather = future.result()
     result_forecast = weathercall(weather)
+    if report=='y':
+        with pd.ExcelWriter('Forecast_Results.xlsx') as writer:
+            result_forecast.to_excel(writer,sheet_name="Weather_Report")
     
     print(result_forecast)
 
