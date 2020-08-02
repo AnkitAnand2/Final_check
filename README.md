@@ -51,7 +51,7 @@ city=input("Enter the City Name you want the forecast for: ")# Prompt to input c
 
 ## requirements.txt file
 
-This contains all the packages used this package.
+This contains all the packages used.
 
 
 ## Contributing
